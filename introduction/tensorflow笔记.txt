@@ -9,3 +9,23 @@ with tf.Session() as sess():
 "/cpu:0"：计算机的 CPU；
 "/gpu:0"：计算机的第一个 GPU，如果可用；
 "/gpu:1"：计算机的第二个 GPU，以此类推。
+
+#错误提示
+InvalidArgumentError (see above for traceback): You must feed a value for placeholder tensor 'Placeholder_21' with dtype float and shape [?,10]
+	 [[Node: Placeholder_21 = Placeholder[dtype=DT_FLOAT, shape=[?,10], _device="/job:localhost/replica:0/task:0/device:CPU:0"]()]]
+注意的问题：应该给你的变量命名，这样才好找出错误。
+几个知识点：
+tf.placeholder()#占位符。tf.placeholder(dtype, shape=None, name=None)
+tf.Variable()#变量
+tf.zeros()#0值
+tf.nn.softmax()#softmax回归
+tf.matmul(x,W)#矩阵乘法
+tf.reduce_mean()#计算平均值
+tf.reduce_sum()#求和计算
+tf.train.GradientDescentOptimizer()#梯度下降优化器
+tf.device('/cpu:0')#使用CPU计算
+tf.initialize_all_variables()#初始化所有变量.需要sess.run()
+sess.run(train_step,feed_dict = {x:,y:})#注意格式
+tf.equal(a,b)#计算是a,b否相等	
+tf.argmax(y,1)#计算横轴上的y的最大索引
+tf.cast(correct_prediction, "float")#把 correct_prediction 转为float格式
